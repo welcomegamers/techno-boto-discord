@@ -1,7 +1,8 @@
-const Discord = require('discord.js');
-const client = new Discord.Client();
-import { DISCORD_TOKEN, TWITCH_CHANNEL_ID } from './constants'
+const { Client, MessageEmbed } = require('discord.js');
+const client = new Client();
+import { DISCORD_TOKEN, TWITCH_CHANNEL_ID, PP_CHANNEL_ID } from './constants'
 import { containsUrl, isTwitchUrl } from './helpers'
+
 
 
 client.on('ready', () => {
@@ -42,6 +43,18 @@ client.on('message', msg => {
     }
 });
 
+
+client.on('message', msg => {
+  if (msg.channel.id === PP_CHANNEL_ID) {
+    console.log('is in presidential coms')
+    if (msg.content === '!protect') {
+      const embed1 = new MessageEmbed()
+      .setTitle('The President Needs Protection')
+      .setDescription(`Quick go help him <@everyone>`) 
+    }
+
+  }
+});
 
 
 
